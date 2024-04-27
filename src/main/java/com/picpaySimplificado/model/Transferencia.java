@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 @Entity(name="transferencia")
 @Table(name="transferencia")
@@ -27,7 +26,6 @@ public class Transferencia {
     @ManyToOne
     @JoinColumn(name="recptor_id")
     private Usuario recptor;
-
     private LocalDateTime timestamp;
     public Transferencia() {
 
