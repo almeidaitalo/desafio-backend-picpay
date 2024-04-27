@@ -32,6 +32,10 @@ public class Usuario {
 
  private BigDecimal saldo;
 
+ @Enumerated(EnumType.STRING)
  private UsuarioTipo usuarioTipo;
 
+ public Usuario() {
+
+ }
 }
