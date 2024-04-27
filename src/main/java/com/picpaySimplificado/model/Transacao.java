@@ -1,20 +1,18 @@
 package com.picpaySimplificado.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity(name="transferencia")
-@Table(name="transferencia")
+@Entity(name="transacao")
+@Table(name="transacao")
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(of="id")
-public class Transferencia {
+public class Transacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
@@ -27,7 +25,6 @@ public class Transferencia {
     @JoinColumn(name="recptor_id")
     private Usuario recptor;
     private LocalDateTime timestamp;
-    public Transferencia() {
 
     }
-}
+
