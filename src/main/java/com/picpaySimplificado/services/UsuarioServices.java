@@ -13,11 +13,11 @@ public class UsuarioServices {
     @Autowired
     private UsuarioRepository repository;
 
-    public void validarTransacao(Usuario remetente, BigDecimal valor) throws Exception {
+    public void validarTransacao(Usuario remetente, BigDecimal value) throws Exception {
         if (remetente.getUsuarioTipo() == UsuarioTipo.logistas) {
             throw new Exception("Usuario do tipo Logista não está autorizado a realizar transação ");
         }
-        if (remetente.getSaldo().compareTo(valor) < 0) {
+        if (remetente.getSaldo().compareTo(value) < 0) {
             throw new Exception("Saldo insuficiente");
         }
     }
