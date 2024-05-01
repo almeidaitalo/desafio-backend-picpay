@@ -19,11 +19,14 @@ import java.util.Map;
 public class TransacaoServices {
    @Autowired
    private UsuarioServices usuarioServices;
+   @Autowired
    private RestTemplate restTemplate;
    @Autowired
    private TransacaoRepository repository;
+   @Autowired
+   private NotificacaoService notificacaoService;
 
-   public void createTransacao(TransacaoDTO transacaoDTO) throws Exception {
+   public Transacao createTransacao(TransacaoDTO transacaoDTO) throws Exception {
        Usuario remetente = this.usuarioServices.findUsuarioById(transacaoDTO.remetenteId());
        Usuario receptor = this.usuarioServices.findUsuarioById(transacaoDTO.receptorId());
        usuarioServices.validarTransacao(remetente, transacaoDTO.value());
@@ -44,6 +47,9 @@ public class TransacaoServices {
        this.repository.save(transacao);
        this.usuarioServices.salveUsuario(remetente);
        this.usuarioServices.salveUsuario(receptor);
+       this.notificacaoService.remetNoficacao(remetente, "Transação realizada com sucesso!");
+       this.notificacaoService.remetNoficacao(receptor, "Transação recebida com sucesso!");
+       return transacao;
    }
    public boolean authorozeTransaction(Usuario remetente, BigDecimal value){
    ResponseEntity<Map> authorizationResponse = restTemplate.getForEntity("https://run.mocky.io/v3/5794d450-d2e2-4412-8131-73d0293ac1cc", Map.class);

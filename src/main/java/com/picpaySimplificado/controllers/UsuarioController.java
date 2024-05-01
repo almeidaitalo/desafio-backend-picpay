@@ -6,19 +6,18 @@ import com.picpaySimplificado.services.UsuarioServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/user")
+@RestController()
+@RequestMapping("/user")
 public class UsuarioController {
 
     @Autowired
     private UsuarioServices usuarioServices;
     @PostMapping
-    public ResponseEntity<Usuario> createUsuario(UsuarioDTO usuarioDTO){
+    public ResponseEntity<Usuario> createUsuario(@RequestBody UsuarioDTO usuarioDTO){
        Usuario newUsuario = usuarioServices.createUsuario(usuarioDTO);
        return new ResponseEntity<>(newUsuario, HttpStatus.CREATED);
 

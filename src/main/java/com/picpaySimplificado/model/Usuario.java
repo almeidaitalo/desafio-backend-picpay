@@ -41,6 +41,7 @@ public class Usuario {
    this.saldo =  data.saldo();
    this.usuarioTipo = data.usuarioTipo();
    this.password = data.password();
+   this.cpf = data.cpf();
    this.email = data.email();
 
  }
