@@ -52,6 +52,5 @@ public class TransacaoServices {
              String message = (String) authorizationResponse.getBody().get("message");
               return "Autorizado".equalsIgnoreCase(message);
          } else return false;
-
    }
 }
